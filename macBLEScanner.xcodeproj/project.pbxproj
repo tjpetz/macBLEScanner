@@ -16,6 +16,7 @@
 		0F2D1C032535EFEB00D2BC34 /* PeripheralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D1C022535EFEB00D2BC34 /* PeripheralView.swift */; };
 		0F2D1C062535EFEE00D2BC34 /* ServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D1C052535EFEE00D2BC34 /* ServiceView.swift */; };
 		0F2D1C0B2535F2E800D2BC34 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0F2D1C0A2535F2E800D2BC34 /* README.md */; };
+		0FF355F4253626DC000F5B81 /* CharacteristicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF355F3253626DC000F5B81 /* CharacteristicView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		0F2D1C022535EFEB00D2BC34 /* PeripheralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralView.swift; sourceTree = "<group>"; };
 		0F2D1C052535EFEE00D2BC34 /* ServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceView.swift; sourceTree = "<group>"; };
 		0F2D1C0A2535F2E800D2BC34 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		0FF355F3253626DC000F5B81 /* CharacteristicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				0F2D1BEB2535EFD700D2BC34 /* AppDelegate.swift */,
 				0F2D1BED2535EFD700D2BC34 /* ContentView.swift */,
 				0F2D1BFF2535EFE600D2BC34 /* BLEClasses.swift */,
+				0FF355F3253626DC000F5B81 /* CharacteristicView.swift */,
 				0F2D1C022535EFEB00D2BC34 /* PeripheralView.swift */,
 				0F2D1C052535EFEE00D2BC34 /* ServiceView.swift */,
 				0F2D1BEF2535EFD800D2BC34 /* Assets.xcassets */,
@@ -160,6 +163,7 @@
 				0F2D1C062535EFEE00D2BC34 /* ServiceView.swift in Sources */,
 				0F2D1C002535EFE600D2BC34 /* BLEClasses.swift in Sources */,
 				0F2D1BEE2535EFD700D2BC34 /* ContentView.swift in Sources */,
+				0FF355F4253626DC000F5B81 /* CharacteristicView.swift in Sources */,
 				0F2D1C032535EFEB00D2BC34 /* PeripheralView.swift in Sources */,
 				0F2D1BEC2535EFD700D2BC34 /* AppDelegate.swift in Sources */,
 			);

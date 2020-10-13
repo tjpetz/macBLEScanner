@@ -6,23 +6,23 @@
 //
 
 import SwiftUI
+import CoreBluetooth
 
 struct ServiceView: View {
     @ObservedObject var service: Service
     
     var body: some View {
         VStack {
-            Text(service.service.uuid.uuidString)
             Text("Characteristics").font(.footnote)
-            List (service.characteristics, id: \.uuid) {
-                characteristic in
-                Text(characteristic.uuid.uuidString)
-                Text("Notifying: \(characteristic.isNotifying ? "True" : "False")")
+            NavigationView {
+                List (service.characteristics) {
+                    characteristic in
+                    CharacteristicCell(characteristic: characteristic)
+                }
             }
             Spacer()
         }.frame(minWidth: 300)
     }
-    
 }
 
 //struct ServiceView_Previews: PreviewProvider {
@@ -30,3 +30,25 @@ struct ServiceView: View {
 //        ServiceView()
 //    }
 //}
+
+struct CharacteristicCell: View {
+    @ObservedObject var characteristic: Characteristic
+    
+    var body: some View {
+        VStack {
+                VStack {
+                NavigationLink (destination: CharacteristicView(characteristic: characteristic)) {
+                        Text(characteristic.characteristic.uuid.uuidString)
+                }.disabled(characteristic.characteristic.descriptors?.count == 0)
+            }
+            VStack {
+                Text("Notifying: \(characteristic.characteristic.isNotifying ? "True" : "False")").font(.footnote)
+                HStack {
+                    Button("Read", action: {})
+                    Button("Write", action: {})
+                    Button("Subscribe", action: {})
+                }
+            }
+        }
+    }
+}
