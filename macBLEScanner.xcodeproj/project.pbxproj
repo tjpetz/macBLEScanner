@@ -12,6 +12,9 @@
 		0F2D1BF02535EFD800D2BC34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F2D1BEF2535EFD800D2BC34 /* Assets.xcassets */; };
 		0F2D1BF32535EFD800D2BC34 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F2D1BF22535EFD800D2BC34 /* Preview Assets.xcassets */; };
 		0F2D1BF62535EFD800D2BC34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F2D1BF42535EFD800D2BC34 /* Main.storyboard */; };
+		0F2D1C002535EFE600D2BC34 /* BLEClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D1BFF2535EFE600D2BC34 /* BLEClasses.swift */; };
+		0F2D1C032535EFEB00D2BC34 /* PeripheralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D1C022535EFEB00D2BC34 /* PeripheralView.swift */; };
+		0F2D1C062535EFEE00D2BC34 /* ServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D1C052535EFEE00D2BC34 /* ServiceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		0F2D1BF52535EFD800D2BC34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0F2D1BF72535EFD800D2BC34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F2D1BF82535EFD800D2BC34 /* macBLEScanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macBLEScanner.entitlements; sourceTree = "<group>"; };
+		0F2D1BFF2535EFE600D2BC34 /* BLEClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEClasses.swift; sourceTree = "<group>"; };
+		0F2D1C022535EFEB00D2BC34 /* PeripheralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralView.swift; sourceTree = "<group>"; };
+		0F2D1C052535EFEE00D2BC34 /* ServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +63,9 @@
 			children = (
 				0F2D1BEB2535EFD700D2BC34 /* AppDelegate.swift */,
 				0F2D1BED2535EFD700D2BC34 /* ContentView.swift */,
+				0F2D1BFF2535EFE600D2BC34 /* BLEClasses.swift */,
+				0F2D1C022535EFEB00D2BC34 /* PeripheralView.swift */,
+				0F2D1C052535EFEE00D2BC34 /* ServiceView.swift */,
 				0F2D1BEF2535EFD800D2BC34 /* Assets.xcassets */,
 				0F2D1BF42535EFD800D2BC34 /* Main.storyboard */,
 				0F2D1BF72535EFD800D2BC34 /* Info.plist */,
@@ -144,7 +153,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F2D1C062535EFEE00D2BC34 /* ServiceView.swift in Sources */,
+				0F2D1C002535EFE600D2BC34 /* BLEClasses.swift in Sources */,
 				0F2D1BEE2535EFD700D2BC34 /* ContentView.swift in Sources */,
+				0F2D1C032535EFEB00D2BC34 /* PeripheralView.swift in Sources */,
 				0F2D1BEC2535EFD700D2BC34 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +296,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macBLEScanner/macBLEScanner.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"macBLEScanner/Preview Content\"";
@@ -308,6 +321,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macBLEScanner/macBLEScanner.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"macBLEScanner/Preview Content\"";
