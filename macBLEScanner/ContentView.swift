@@ -18,7 +18,7 @@ struct ContentView: View {
             NavigationView {
                 List (bleManager.peripherals) { peripheral in
                     PeripheralCell(manager: bleManager, peripheral: peripheral)
-                        }
+                }
             }
             Text("\(bleManager.peripherals.count) devices")
             HStack {

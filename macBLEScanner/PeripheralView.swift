@@ -20,19 +20,16 @@ struct PeripheralView: View {
             NavigationView {
                 List (peripheral.services) {
                     service in
-                    NavigationLink (destination: ServiceView(service: service)) {
+                    NavigationLink (destination: ServiceView(peripheral: peripheral, service: service)) {
                         Text(service.service.uuid.uuidString)
                         }
                     }
             }
-            HStack {
-                Button("Connect", action: {manager.myCentral.connect(peripheral.peripheral)})
-                    .disabled(peripheral.peripheral.state == .connected)
-                Button("Disconnect", action: {manager.myCentral.cancelPeripheralConnection(peripheral.peripheral)})
-                    .disabled(peripheral.peripheral.state != .connected)
-            }
         }.frame(minWidth: 300)
+        .onAppear(perform: {manager.myCentral.connect(peripheral.peripheral)})
+        .onDisappear(perform: {manager.myCentral.cancelPeripheralConnection(peripheral.peripheral)})
     }
+    
 }
 
 //struct PeripheralView_Previews: PreviewProvider {

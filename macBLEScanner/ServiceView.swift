@@ -9,6 +9,7 @@ import SwiftUI
 import CoreBluetooth
 
 struct ServiceView: View {
+    @ObservedObject var peripheral: Peripheral
     @ObservedObject var service: Service
     
     var body: some View {
@@ -17,7 +18,7 @@ struct ServiceView: View {
             NavigationView {
                 List (service.characteristics) {
                     characteristic in
-                    CharacteristicCell(characteristic: characteristic)
+                    CharacteristicCell(peripheral: peripheral, characteristic: characteristic)
                 }
             }
             Spacer()
@@ -32,6 +33,7 @@ struct ServiceView: View {
 //}
 
 struct CharacteristicCell: View {
+    @ObservedObject var peripheral: Peripheral
     @ObservedObject var characteristic: Characteristic
     
     var body: some View {
@@ -42,13 +44,21 @@ struct CharacteristicCell: View {
                 }.disabled(characteristic.characteristic.descriptors?.count == 0)
             }
             VStack {
-                Text("Notifying: \(characteristic.characteristic.isNotifying ? "True" : "False")").font(.footnote)
+                VStack {
+                    Text("Notifying: \(characteristic.characteristic.isNotifying ? "True" : "False")").font(.footnote)
+                    Text("Value = \(characteristic.characteristic.value?.hexEncodedString() ?? "-")")
+                }
                 HStack {
-                    Button("Read", action: {})
-                    Button("Write", action: {})
-                    Button("Subscribe", action: {})
+                    Button("Read", action: {}).disabled(!characteristic.characteristic.properties.contains(.read))
+                    Button("Write", action: {}).disabled(!characteristic.characteristic.properties.contains(.write))
+                    Button("Subscribe", action: {}).disabled(!characteristic.characteristic.properties.contains(.notify))
                 }
             }
-        }
+        }.onAppear(perform: {
+            // Read the value if it's readable
+            if characteristic.characteristic.properties.contains(.read) {
+                peripheral.peripheral.readValue(for: characteristic.characteristic)
+            }
+            })
     }
 }
