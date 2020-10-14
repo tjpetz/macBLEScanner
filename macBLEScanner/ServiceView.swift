@@ -38,21 +38,14 @@ struct CharacteristicCell: View {
     
     var body: some View {
         VStack {
-                VStack {
-                NavigationLink (destination: CharacteristicView(characteristic: characteristic)) {
-                        Text(characteristic.characteristic.uuid.uuidString)
-                }.disabled(characteristic.characteristic.descriptors?.count == 0)
-            }
-            VStack {
-                VStack {
-                    Text("Notifying: \(characteristic.characteristic.isNotifying ? "True" : "False")").font(.footnote)
-                    Text("Value = \(characteristic.characteristic.value?.hexEncodedString() ?? "-")")
-                }
-                HStack {
-                    Button("Read", action: {}).disabled(!characteristic.characteristic.properties.contains(.read))
-                    Button("Write", action: {}).disabled(!characteristic.characteristic.properties.contains(.write))
-                    Button("Subscribe", action: {}).disabled(!characteristic.characteristic.properties.contains(.notify))
-                }
+            Text(characteristic.characteristic.uuid.uuidString)
+            Text("Value = \(characteristic.value?.hexEncodedString() ?? "-")")
+            HStack {
+                Button("Read",
+                       action: {peripheral.peripheral.readValue(for: characteristic.characteristic)}
+                ).disabled(!characteristic.characteristic.properties.contains(.read))
+                Button("Write", action: {}).disabled(!characteristic.characteristic.properties.contains(.write))
+                Button("Subscribe", action: {}).disabled(!characteristic.characteristic.properties.contains(.notify))
             }
         }.onAppear(perform: {
             // Read the value if it's readable

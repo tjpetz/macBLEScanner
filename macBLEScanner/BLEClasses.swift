@@ -32,6 +32,7 @@ class Descriptor: NSObject, ObservableObject, Identifiable {
 
 class Characteristic: NSObject, ObservableObject, Identifiable {
     let characteristic: CBCharacteristic
+    @Published var value: Data?
     @Published var descriptors: [Descriptor] = []
     
     func findDescriptor(_ descriptor: CBDescriptor) -> Descriptor? {
@@ -181,6 +182,11 @@ class BLEManager: NSObject, ObservableObject, CBCentralManagerDelegate, CBPeriph
             if let s = p.findService(service) {
                 s.characteristics = []
                 for c in service.characteristics! {
+                    // trigger a read of the characterisitic if readable
+                    if c.properties.contains(.read) {
+                        peripheral.readValue(for: c)
+                    }
+                    // Addit to our list
                     s.characteristics.append(Characteristic(c))
                     // discover the descriptors for this characteristic
                     p.peripheral.discoverDescriptors(for: c)
@@ -195,7 +201,14 @@ class BLEManager: NSObject, ObservableObject, CBCentralManagerDelegate, CBPeriph
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         print("Updated value of \(characteristic.value.debugDescription) for \(characteristic.uuid.uuidString) of \(peripheral.identifier.uuidString)")
-        print("Hex value = \(characteristic.value!.hexEncodedString())")
+        print("Hex value = \(characteristic.value?.hexEncodedString() ?? "unknown")")
+        if let p = self.findPeripheral(peripheral) {
+            if let s = p.findService(characteristic.service) {
+                if let c = s.findCharacteristic(characteristic) {
+                    c.value = characteristic.value
+                }
+            }
+        }
     }
     
     // find an existing peripheral or return nil
